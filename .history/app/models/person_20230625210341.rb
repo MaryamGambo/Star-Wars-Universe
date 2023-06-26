@@ -9,9 +9,4 @@ class Person < ApplicationRecord
   validates :name, presence: true
   validates :height, numericality: { greater_than: 0 }, presence: true
   validates :mass, numericality: { greater_than: 0 }, presence: true
-  validates :hair_color, allow_blank: true
-  validates :skin_color, allow_blank: true
-  validates :eye_color, allow_blank: true
-  validates :birth_year, allow_blank: true
-  validates :gender, allow_blank: true
 end

@@ -5,5 +5,5 @@ class Planet < ApplicationRecord
   # validatio
   validates :name, presence: true
   validates :diameter, presence: true
-  validates :population, presence: true
+  validates :population, presence: truens
 end
