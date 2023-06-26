@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_06_26_011310) do
+ActiveRecord::Schema[7.0].define(version: 2023_06_26_011510) do
   create_table "films", force: :cascade do |t|
     t.string "title"
     t.string "episode_id"
@@ -44,6 +44,14 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_26_011310) do
   end
 
   create_table "starships", force: :cascade do |t|
+    t.string "name"
+    t.string "model"
+    t.string "manufacturer"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "vehicles", force: :cascade do |t|
     t.string "name"
     t.string "model"
     t.string "manufacturer"
