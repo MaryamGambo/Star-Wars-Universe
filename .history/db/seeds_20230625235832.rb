@@ -96,7 +96,7 @@ people_data['results'].each do |person_data|
   planet = Planet.find_by(url: planet_url)
 
   species_url = person_data['homeworld']
-  species = Species.find_by(url: species_url)
+  species = Species.find_by(url: species_url).first
 
   films = person_data['films'].map do |film_url|
     Film.find_by(url: film_url)
@@ -119,18 +119,19 @@ people_data['results'].each do |person_data|
     gender: person_data['gender'],
     planet: planet,
     species: species,
+    films: films,
+    starships: starships,
+    vehicles: vehicles,
     url: peraon_data['url']
   )
 
-  starships.each do |starship|
+  person_data['starships'].each do |starship_url|
+    starship = Starship.find_by(url: starship_url)
     person.starships << starship if starship.present?
   end
 
-  films.each do |film|
-    person.films << film if film.present?
-  end
-
-  vehicles.each do |vehicle|
+  person_data['vehicles'].each do |vehicle_url|
+    vehicle = Vehicle.find_by(url: vehicle_url)
     person.vehicles << vehicle if vehicle.present?
   end
 end

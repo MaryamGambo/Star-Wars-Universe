@@ -122,15 +122,18 @@ people_data['results'].each do |person_data|
     url: peraon_data['url']
   )
 
-  starships.each do |starship|
+  person_data['starships'].each do |starship_url|
+    starship = Starship.find_by(url: starship_url)
     person.starships << starship if starship.present?
   end
 
-  films.each do |film|
+  person_data['films'].each do |film_url|
+    film = Film.find_by(url: film_url)
     person.films << film if film.present?
   end
 
-  vehicles.each do |vehicle|
+  person_data['vehicles'].each do |vehicle_url|
+    vehicle = Vehicle.find_by(url: vehicle_url)
     person.vehicles << vehicle if vehicle.present?
   end
 end

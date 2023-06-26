@@ -122,15 +122,7 @@ people_data['results'].each do |person_data|
     url: peraon_data['url']
   )
 
-  starships.each do |starship|
-    person.starships << starship if starship.present?
-  end
-
-  films.each do |film|
-    person.films << film if film.present?
-  end
-
-  vehicles.each do |vehicle|
-    person.vehicles << vehicle if vehicle.present?
-  end
+  person.starships << starships.compact
+  person.films << films.compact
+  person.vehicles << vehicles.compact
 end
