@@ -10,7 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_06_26_002707) do
+ActiveRecord::Schema[7.0].define(version: 2023_06_26_004816) do
+  create_table "films", force: :cascade do |t|
+    t.string "title"
+    t.integer "episode_id"
+    t.text "opening_crawl"
+    t.string "director"
+    t.string "producer"
+    t.date "release_date"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "people", force: :cascade do |t|
     t.string "name"
     t.string "height"
