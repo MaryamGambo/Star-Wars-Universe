@@ -9,13 +9,7 @@
 # add the httprty gem
 require 'httparty'
 
-# Clear existing data
-Planet.destroy_all
-Species.destroy_all
-Starship.destroy_all
-Vehicle.destroy_all
-Film.destroy_all
-Person.destroy_all
+#Clear existing data
 
 
 
