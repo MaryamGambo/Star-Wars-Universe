@@ -1,0 +1,11 @@
+<h1>ABOUT US</h1>
+
+<% @data_sources.each do |data_source| %>
+  <h3><%= data_source[:title] %></h3>
+  <p><%= data_source[:description] %></p>
+<% end %>
+
+<% if defined?(@erd_information) %>
+  <h2>Entity Relationship Diagram (ERD)</h2>
+  <p><%= @erd_information[:description] %></p>
+<% end %>
