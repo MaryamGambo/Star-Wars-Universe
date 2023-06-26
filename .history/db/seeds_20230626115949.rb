@@ -76,7 +76,7 @@ end
 
 # Fetch and seed vehicles
 vehicles_data = fetch_all_data('https://swapi.dev/api/vehicles/')
-vehicles_data.each do |vehicle_data|
+vehicles_data['results'].each do |vehicle_data|
   Vehicle.create!(
     name: vehicle_data['name'],
     model: vehicle_data['model'],
@@ -87,7 +87,7 @@ end
 
 # Fetch and seed films
 films_data = fetch_all_data('https://swapi.dev/api/films/')
-films_data.each do |film_data|
+films_data['results'].each do |film_data|
   Film.create!(
     title: film_data['title'],
     episode_id: film_data['episode_id'],
@@ -101,7 +101,7 @@ end
 
 # Fetch and seed people
 people_data = fetch_all_data('https://swapi.dev/api/people/')
-people_data.each do |person_data|
+people_data['results'].each do |person_data|
   planet_url = person_data['homeworld']
   planet =  nil
   if planet_url.present?
@@ -130,7 +130,6 @@ people_data.each do |person_data|
     Vehicle.find_by(url: vehicle_url)
   end.compact
 
-
   person = Person.create!(
     name: person_data['name'],
     height: person_data['height'],
@@ -145,7 +144,7 @@ people_data.each do |person_data|
     url: person_data['url']
   )
 
-    person.films << films
-    person.starships << starships
-    person.vehicles << vehicles
+  person.films << films
+  person.starships << starships
+  person.vehicles << vehicles
 end

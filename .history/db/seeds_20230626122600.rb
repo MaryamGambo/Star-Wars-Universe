@@ -130,11 +130,16 @@ people_data.each do |person_data|
     Vehicle.find_by(url: vehicle_url)
   end.compact
 
+  mass = person_data['mass']
+  mass = nil if mass == 'unknown' || mass.blank? || mass.to_i.zero?
+
+  height = person_data['height']
+  height = nil if height == 'unknown' || height.blank? || height.to_i.zero?
 
   person = Person.create!(
     name: person_data['name'],
-    height: person_data['height'],
-    mass: person_data['mass'],
+    height: height,
+    mass: mass ,
     hair_color: person_data['hair_color'],
     skin_color: person_data['skin_color'],
     eye_color: person_data['eye_color'],
@@ -145,7 +150,7 @@ people_data.each do |person_data|
     url: person_data['url']
   )
 
-    person.films << films
-    person.starships << starships
-    person.vehicles << vehicles
+  person.films << films
+  person.starships << starships
+  person.vehicles << vehicles
 end

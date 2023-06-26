@@ -131,10 +131,11 @@ people_data.each do |person_data|
   end.compact
 
 
+
   person = Person.create!(
     name: person_data['name'],
-    height: person_data['height'],
-    mass: person_data['mass'],
+    height: height,
+    mass: mass,
     hair_color: person_data['hair_color'],
     skin_color: person_data['skin_color'],
     eye_color: person_data['eye_color'],
@@ -145,7 +146,13 @@ people_data.each do |person_data|
     url: person_data['url']
   )
 
+  # Perform validation check for mass attribute
+  if person.valid?
     person.films << films
     person.starships << starships
     person.vehicles << vehicles
+  else
+    puts "Skipping person #{person_data['name']} due to validation error: #{person.errors.full_messages.join(', ')}"
+    person.destroy # Rollback the created record if validation fails
+end
 end

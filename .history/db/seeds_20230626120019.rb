@@ -130,7 +130,6 @@ people_data.each do |person_data|
     Vehicle.find_by(url: vehicle_url)
   end.compact
 
-
   person = Person.create!(
     name: person_data['name'],
     height: person_data['height'],
@@ -145,7 +144,7 @@ people_data.each do |person_data|
     url: person_data['url']
   )
 
-    person.films << films
-    person.starships << starships
-    person.vehicles << vehicles
+  person.films << films
+  person.starships << starships
+  person.vehicles << vehicles
 end

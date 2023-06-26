@@ -145,7 +145,13 @@ people_data.each do |person_data|
     url: person_data['url']
   )
 
+  # Perform validation check for mass attribute
+  if person.valid?
     person.films << films
     person.starships << starships
     person.vehicles << vehicles
+  else
+    puts "Skipping person #{person_data['name']} due to validation error: #{person.errors.full_messages.join(', ')}"
+    person.destroy # Rollback the created record if validation fails
+end
 end

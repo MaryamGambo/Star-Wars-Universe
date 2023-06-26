@@ -10,13 +10,12 @@
 require 'httparty'
 
 # Clear existing data
-Person.destroy_all
-Film.destroy_all
+Planet.destroy_all
+Species.destroy_all
 Starship.destroy_all
 Vehicle.destroy_all
-Species.destroy_all
-Planet.destroy_all
-
+Film.destroy_all
+Person.destroy_all
 
 # method to fetch data from API
 def fetch_data(url)
@@ -24,22 +23,9 @@ def fetch_data(url)
   JSON.parse(response.body)
 end
 
-# method to fetch all data from API
-def fetch_all_data(url)
-  data = []
-  while url
-    response = fetch_data(url)
-    data += response['results']
-    url = response['next']
-  end
-  data
-end
-
-
-
 # Fetch and seed planets
-planets_data = fetch_all_data('https://swapi.dev/api/planets/')
-planets_data.each do |planet_data|
+planets_data = fetch_data('https://swapi.dev/api/planets')
+planets_data['results'].each do |planet_data|
   Planet.create!(
     name: planet_data['name'],
     diameter: planet_data['diameter'],
@@ -49,23 +35,23 @@ planets_data.each do |planet_data|
 end
 
 # Fetch and seed species
-species_data = fetch_all_data('https://swapi.dev/api/species/')
-species_data.each do |specie_data|
-  planet_url = specie_data['homeworld']
+species_data = fetch_data('https://swapi.dev/api/species')
+species_data['results'].each do |species_data|
+  planet_url = species_data['homeworld']
   planet = Planet.find_by(url: planet_url)
 
   Species.create!(
-    name: specie_data['name'],
-    average_lifespan: specie_data['average_lifespan'],
-    language: specie_data['language'],
+    name: species_data['name'],
+    average_lifespan: species_data['average_lifespan'],
+    language: species_data['language'],
     planet: planet,
-    url: specie_data['url']
+    url: species_data['url']
   )
 end
 
 # Fetch and seed starships
-starships_data = fetch_all_data('https://swapi.dev/api/starships/')
-starships_data.each do |starship_data|
+starships_data = fetch_data('https://swapi.dev/api/starships')
+starships_data['results'].each do |starship_data|
   Starship.create!(
     name: starship_data['name'],
     model: starship_data['model'],
@@ -75,8 +61,8 @@ starships_data.each do |starship_data|
 end
 
 # Fetch and seed vehicles
-vehicles_data = fetch_all_data('https://swapi.dev/api/vehicles/')
-vehicles_data.each do |vehicle_data|
+vehicles_data = fetch_data('https://swapi.dev/api/vehicles')
+vehicles_data['results'].each do |vehicle_data|
   Vehicle.create!(
     name: vehicle_data['name'],
     model: vehicle_data['model'],
@@ -86,8 +72,8 @@ vehicles_data.each do |vehicle_data|
 end
 
 # Fetch and seed films
-films_data = fetch_all_data('https://swapi.dev/api/films/')
-films_data.each do |film_data|
+films_data = fetch_data('https://swapi.dev/api/films')
+films_data['results'].each do |film_data|
   Film.create!(
     title: film_data['title'],
     episode_id: film_data['episode_id'],
@@ -100,13 +86,10 @@ films_data.each do |film_data|
 end
 
 # Fetch and seed people
-people_data = fetch_all_data('https://swapi.dev/api/people/')
-people_data.each do |person_data|
+people_data = fetch_data('https://swapi.dev/api/people')
+people_data['results'].each do |person_data|
   planet_url = person_data['homeworld']
-  planet =  nil
-  if planet_url.present?
-    planet = Planet.find_by(url: planet_url)
-  end
+  planet = Planet.find_by(url: planet_url)
 
   species_url = person_data['species']
   species = nil
@@ -123,13 +106,12 @@ people_data.each do |person_data|
   starships_urls = person_data['starships']
   starships = starships_urls.map do |starship_url|
     Starship.find_by(url: starship_url)
-  end.compact
+  end
 
   vehicles_urls = person_data['vehicles']
   vehicles = vehicles_urls.map do |vehicle_url|
     Vehicle.find_by(url: vehicle_url)
-  end.compact
-
+  end
 
   person = Person.create!(
     name: person_data['name'],
@@ -141,11 +123,10 @@ people_data.each do |person_data|
     birth_year: person_data['birth_year'],
     gender: person_data['gender'],
     planet: planet,
-    species: species,
-    url: person_data['url']
+    species: species.first # Use `species.first` instead of `species`
   )
 
-    person.films << films
-    person.starships << starships
-    person.vehicles << vehicles
+  person.films << films
+  person.starships << starships
+  person.vehicles << vehicles
 end

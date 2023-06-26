@@ -7,5 +7,7 @@ class Person < ApplicationRecord
 
   # validations
   validates :name, presence:true
-  validates :url, presence:true
+  validates :height,  optional: true
+  validates :mass,  optional: true
+  validates :url, presence: true
 end
