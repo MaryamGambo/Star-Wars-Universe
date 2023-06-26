@@ -10,10 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_06_26_010135) do
+ActiveRecord::Schema[7.0].define(version: 2023_06_26_011310) do
   create_table "films", force: :cascade do |t|
     t.string "title"
-    t.integer "episode_id"
+    t.string "episode_id"
     t.text "opening_crawl"
     t.string "director"
     t.string "producer"
