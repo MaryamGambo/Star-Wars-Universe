@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :species
   resources :vehicles
   resources :films
   resources :starships

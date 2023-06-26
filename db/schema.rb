@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_06_26_011510) do
+ActiveRecord::Schema[7.0].define(version: 2023_06_26_011911) do
   create_table "films", force: :cascade do |t|
     t.string "title"
     t.string "episode_id"
@@ -43,6 +43,16 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_26_011510) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "species", force: :cascade do |t|
+    t.string "name"
+    t.string "average_lifespan"
+    t.string "language"
+    t.integer "planet_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["planet_id"], name: "index_species_on_planet_id"
+  end
+
   create_table "starships", force: :cascade do |t|
     t.string "name"
     t.string "model"
@@ -59,4 +69,5 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_26_011510) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "species", "planets"
 end
