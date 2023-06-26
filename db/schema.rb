@@ -42,8 +42,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_26_152134) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "url"
-    t.integer "species_id", null: false
-    t.integer "planet_id", null: false
+    t.integer "species_id"
+    t.integer "planet_id"
     t.index ["planet_id"], name: "index_people_on_planet_id"
     t.index ["species_id"], name: "index_people_on_species_id"
   end
