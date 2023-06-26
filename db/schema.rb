@@ -11,15 +11,6 @@
 # It's strongly recommended that you check this file into your version control system.
 
 ActiveRecord::Schema[7.0].define(version: 2023_06_26_045710) do
-  create_table "film_people", force: :cascade do |t|
-    t.integer "film_id", null: false
-    t.integer "person_id", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["film_id"], name: "index_film_people_on_film_id"
-    t.index ["person_id"], name: "index_film_people_on_person_id"
-  end
-
   create_table "films", force: :cascade do |t|
     t.string "title"
     t.string "episode_id"
@@ -65,15 +56,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_26_045710) do
     t.string "url"
   end
 
-  create_table "starship_people", force: :cascade do |t|
-    t.integer "starship_id", null: false
-    t.integer "person_id", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["person_id"], name: "index_starship_people_on_person_id"
-    t.index ["starship_id"], name: "index_starship_people_on_starship_id"
-  end
-
   create_table "starships", force: :cascade do |t|
     t.string "name"
     t.string "model"
@@ -81,15 +63,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_26_045710) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "url"
-  end
-
-  create_table "vehicle_people", force: :cascade do |t|
-    t.integer "vehicle_id", null: false
-    t.integer "person_id", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["person_id"], name: "index_vehicle_people_on_person_id"
-    t.index ["vehicle_id"], name: "index_vehicle_people_on_vehicle_id"
   end
 
   create_table "vehicles", force: :cascade do |t|
@@ -101,10 +74,4 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_26_045710) do
     t.string "url"
   end
 
-  add_foreign_key "film_people", "films"
-  add_foreign_key "film_people", "people"
-  add_foreign_key "starship_people", "people"
-  add_foreign_key "starship_people", "starships"
-  add_foreign_key "vehicle_people", "people"
-  add_foreign_key "vehicle_people", "vehicles"
 end
