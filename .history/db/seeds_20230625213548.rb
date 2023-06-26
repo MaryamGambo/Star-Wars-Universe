@@ -15,8 +15,6 @@ def fetch_data(url)
   JSON.parse(response.body)
 end
 
-
-
 # Fetch and seed planets
 planets_data = fetch_data('https://swapi.dev/api/planets')
 planets_data['results'].each do |planet_data|
