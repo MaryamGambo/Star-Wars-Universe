@@ -48,8 +48,7 @@ species_data['results'].each do |species_data|
     name: species_data['name'],
     average_lifespan: species_data['average_lifespan'],
     language: species_data['language'],
-    planet: planet,
-    url: species_data['url']
+    planet: species_data['homeworld']
   )
 end
 
@@ -92,12 +91,8 @@ end
 # Fetch and seed people
 people_data = fetch_data('https://swapi.dev/api/people')
 people_data['results'].each do |person_data|
-  planet_url = person_data['homeworld']
-  planet = Planet.find_by(url: planet_url)
-
-  species_url = person_data['homeworld']
-  species = Planet.find_by(url: species_url).first
-
+  planet = Planet.find_by(name: person_data['homeworld'])
+  species = Species.find_by(name: person_data['species'].first)
   films = person_data['films'].map do |film_url|
     Film.find_by(url: film_url)
   end

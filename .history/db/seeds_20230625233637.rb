@@ -96,7 +96,7 @@ people_data['results'].each do |person_data|
   planet = Planet.find_by(url: planet_url)
 
   species_url = person_data['homeworld']
-  species = Planet.find_by(url: species_url).first
+  species = Planet.find_by(url: species_url)
 
   films = person_data['films'].map do |film_url|
     Film.find_by(url: film_url)
