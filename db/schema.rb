@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_06_26_035949) do
+ActiveRecord::Schema[7.0].define(version: 2023_06_26_040520) do
   create_table "film_people", force: :cascade do |t|
     t.integer "film_id", null: false
     t.integer "person_id", null: false
@@ -43,6 +43,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_26_035949) do
     t.string "gender"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "url"
   end
 
   create_table "planets", force: :cascade do |t|

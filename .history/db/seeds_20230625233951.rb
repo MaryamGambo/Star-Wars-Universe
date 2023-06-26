@@ -33,7 +33,7 @@ planets_data['results'].each do |planet_data|
   Planet.create!(
     name: planet_data['name'],
     diameter: planet_data['diameter'],
-    population: planet_data['population'],
+    population: planet_data['population']
     url:planet_data['url']
   )
 end
@@ -59,7 +59,7 @@ starships_data['results'].each do |starship_data|
   Starship.create!(
     name: starship_data['name'],
     model: starship_data['model'],
-    manufacturer: starship_data['manufacturer'],
+    manufacturer: starship_data['manufacturer']
     url: starship_data['url']
   )
 end
@@ -70,7 +70,7 @@ vehicles_data['results'].each do |vehicle_data|
   Vehicle.create!(
     name: vehicle_data['name'],
     model: vehicle_data['model'],
-    manufacturer: vehicle_data['manufacturer'],
+    manufacturer: vehicle_data['manufacturer']
     url: vehicle_data['url']
   )
 end
@@ -84,7 +84,7 @@ films_data['results'].each do |film_data|
     opening_crawl: film_data['opening_crawl'],
     director: film_data['director'],
     producer: film_data['producer'],
-    release_date: film_data['release_date'],
+    release_date: film_data['release_date']
     url: film_data['url']
   )
 end
