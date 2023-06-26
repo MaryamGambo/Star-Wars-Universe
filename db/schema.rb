@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_06_26_033340) do
+ActiveRecord::Schema[7.0].define(version: 2023_06_26_035041) do
   create_table "film_people", force: :cascade do |t|
     t.integer "film_id", null: false
     t.integer "person_id", null: false
@@ -29,6 +29,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_26_033340) do
     t.date "release_date"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "url"
   end
 
   create_table "people", force: :cascade do |t|
@@ -76,6 +77,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_26_033340) do
     t.string "manufacturer"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "url"
   end
 
   create_table "vehicle_people", force: :cascade do |t|
@@ -93,6 +95,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_26_033340) do
     t.string "manufacturer"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "url"
   end
 
   add_foreign_key "film_people", "films"

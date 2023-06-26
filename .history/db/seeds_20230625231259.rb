@@ -40,7 +40,6 @@ end
 # Fetch and seed species
 species_data = fetch_data('https://swapi.dev/api/species')
 species_data['results'].each do |species_data|
-
   Species.create!(
     name: species_data['name'],
     average_lifespan: species_data['average_lifespan'],
@@ -56,7 +55,6 @@ starships_data['results'].each do |starship_data|
     name: starship_data['name'],
     model: starship_data['model'],
     manufacturer: starship_data['manufacturer']
-    url: starship_data['url']
   )
 end
 
@@ -67,7 +65,6 @@ vehicles_data['results'].each do |vehicle_data|
     name: vehicle_data['name'],
     model: vehicle_data['model'],
     manufacturer: vehicle_data['manufacturer']
-    url: vehicle_data['url']
   )
 end
 
@@ -81,7 +78,6 @@ films_data['results'].each do |film_data|
     director: film_data['director'],
     producer: film_data['producer'],
     release_date: film_data['release_date']
-    url: film_data['url']
   )
 end
 
