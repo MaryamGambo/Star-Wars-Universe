@@ -51,10 +51,14 @@ end
 # Fetch and seed species
 species_data = fetch_all_data('https://swapi.dev/api/species/')
 species_data.each do |species_info|
+  planet_url = species_info['homeworld']
+  planet = Planet.find_by(url: planet_url)
+
   Species.create!(
     name: species_info['name'],
     average_lifespan: species_info['average_lifespan'],
     language: species_info['language'],
+    planet: planet,
     url: species_info['url']
   )
 end
