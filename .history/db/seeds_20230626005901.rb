@@ -122,3 +122,4 @@ people_data['results'].each do |person_data|
     person.vehicles << vehicles
   end
 end
+In this code, we iterate through each person in the fetched

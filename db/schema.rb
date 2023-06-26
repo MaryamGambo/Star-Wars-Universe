@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_06_26_045710) do
+ActiveRecord::Schema[7.0].define(version: 2023_06_26_053959) do
   create_table "films", force: :cascade do |t|
     t.string "title"
     t.string "episode_id"
@@ -21,6 +21,13 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_26_045710) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "url"
+  end
+
+  create_table "films_people", id: false, force: :cascade do |t|
+    t.integer "person_id", null: false
+    t.integer "film_id", null: false
+    t.index ["film_id", "person_id"], name: "index_films_people_on_film_id_and_person_id"
+    t.index ["person_id", "film_id"], name: "index_films_people_on_person_id_and_film_id"
   end
 
   create_table "people", force: :cascade do |t|
@@ -35,6 +42,20 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_26_045710) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "url"
+  end
+
+  create_table "people_starships", id: false, force: :cascade do |t|
+    t.integer "person_id", null: false
+    t.integer "starship_id", null: false
+    t.index ["person_id", "starship_id"], name: "index_people_starships_on_person_id_and_starship_id"
+    t.index ["starship_id", "person_id"], name: "index_people_starships_on_starship_id_and_person_id"
+  end
+
+  create_table "people_vehicles", id: false, force: :cascade do |t|
+    t.integer "person_id", null: false
+    t.integer "vehicle_id", null: false
+    t.index ["person_id", "vehicle_id"], name: "index_people_vehicles_on_person_id_and_vehicle_id"
+    t.index ["vehicle_id", "person_id"], name: "index_people_vehicles_on_vehicle_id_and_person_id"
   end
 
   create_table "planets", force: :cascade do |t|
