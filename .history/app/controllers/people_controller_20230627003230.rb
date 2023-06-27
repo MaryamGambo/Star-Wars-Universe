@@ -34,9 +34,6 @@ class PeopleController < ApplicationController
     @planet = @person.planet
     @species_people = @species ? @species.people : []
     @planet_people = @planet ? @planet.people : []
-    @starships = @person.starships
-    @vehicles = @person.vehicles
-    @films = @person.films
   end
 
 

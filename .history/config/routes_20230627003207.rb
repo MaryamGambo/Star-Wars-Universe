@@ -25,7 +25,13 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :species, only: [:index, :show] do
+    resources :people, only: [:index], controller: 'species/people'
+  end
 
+  resources :planets, only: [:index, :show] do
+    resources :people, only: [:index], controller: 'planets/people'
+  end
 
 
 

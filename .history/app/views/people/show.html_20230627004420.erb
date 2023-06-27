@@ -13,8 +13,9 @@
     <p>Planet: Unknown </p>
 <% end %>
 
-<h2>Starships</h2>
+
 <% if @starships && @starships.any? %>
+  <h2>Starships</h2>
   <ul>
     <% @starships.each do |starship| %>
       <li><%= link_to starship.name, starship_people_path(starship) %></li>
@@ -24,8 +25,8 @@
   <p>No starships associated with this person.</p>
 <% end %>
 
-<h2>Films</h2>
 <% if @films && @films.any? %>
+  <h2>Films</h2>
   <ul>
     <% @films.each do |film| %>
      <li><%= link_to film.title, film_people_path(film) %></li>
@@ -35,11 +36,11 @@
   <p>No films associated with this person.</p>
 <% end %>
 
-<h2>Vehicles</h2>
 <% if @vehicles && @vehicles.any? %>
+  <h2>Vehicles</h2>
   <ul>
     <% @vehicles.each do |vehicle| %>
-      <li><%= link_to vehicle.name, vehicle_people_path(vehicle) %></li>
+      <li><%= vehicle.name %></li>
     <% end %>
   </ul>
 <% else %>

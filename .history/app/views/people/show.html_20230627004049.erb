@@ -1,0 +1,65 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @person %>
+<% if @species %>
+  <p>Species: <%= link_to @species.name, species_people_path(@species) %></p>
+<% else %>
+    <p>Species: Unknown </p>
+<% end %>
+
+<% if @planet %>
+  <p>Planet: <%= link_to @planet.name, planet_people_path(@planet) %></p>
+<% else %>
+    <p>Planet: Unknown </p>
+<% end %>
+
+
+ <% if @starships %>
+  <h2>Starships</h2>
+  <% if @starships.any? %>
+    <ul>
+      <% @starships.each do |starship| %>
+        <li><%= starship.name %></li>
+      <% end %>
+    </ul>
+  <% else %>
+    <p>No starships associated with this person.</p>
+  <% end %>
+<% end %>
+
+<% if @films %>
+  <h2>Films</h2>
+  <% if @films.any? %>
+    <ul>
+      <% @films.each do |film| %>
+        <li><%= film.title %></li>
+      <% end %>
+    </ul>
+  <% else %>
+    <p>No films associated with this person.</p>
+  <% end %>
+<% end %>
+
+  <% if @vehicles %>
+  <h2>Vehicles</h2>
+  <% if @vehicles.any? %>
+    <ul>
+      <% @vehicles.each do |vehicle| %>
+        <li><%= vehicle.name %></li>
+      <% end %>
+    </ul>
+  <% else %>
+    <p>No vehicles associated with this person.</p>
+  <% end %>
+<% end %>
+
+
+
+
+
+
+<div>
+  <%= link_to "Edit this person", edit_person_path(@person.id) %> |
+  <%= link_to "Delete this person", person_path(@person.id), method: :delete, data: { confirm: "Are you sure you want to delete this person?" } %> |
+  <%= link_to "Back to all people", people_path %>
+</div>

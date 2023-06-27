@@ -34,9 +34,6 @@ class PeopleController < ApplicationController
     @planet = @person.planet
     @species_people = @species ? @species.people : []
     @planet_people = @planet ? @planet.people : []
-    @starships = @person.starships
-    @vehicles = @person.vehicles
-    @films = @person.films
   end
 
 
@@ -45,13 +42,21 @@ class PeopleController < ApplicationController
     association = params[:association]
 
     case association
+    when 'species'
+      @species = @person.species
+    when 'planets'
+      @planet = @person.planet
     when 'starships'
       @starships = @person.starships
+
     when 'films'
       @films = @person.films
+
     when 'vehicles'
       @vehicles = @person.vehicles
+
     else
+
       redirect_to person_path(@person)
       return
     end
