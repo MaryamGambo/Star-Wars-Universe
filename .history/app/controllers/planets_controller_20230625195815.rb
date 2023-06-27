@@ -2,11 +2,9 @@ class PlanetsController < ApplicationController
   before_action :set_planet, only: %i[ show edit update destroy ]
 
   # GET /planets or /planets.json
-
-    def index
-      @planets = Planet.page(params[:page]).per(15)
-    end
-
+  def index
+    @planets = Planet.all
+  end
 
   # GET /planets/1 or /planets/1.json
   def show

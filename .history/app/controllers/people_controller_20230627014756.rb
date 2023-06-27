@@ -9,7 +9,6 @@ class PeopleController < ApplicationController
     elsif params[:planet_id]
       @planet = Planet.find(params[:planet_id])
       @people = @planet.people.page(params[:page]).per(15)
-      @association_name = @planet.name
     elsif params[:vehicle_id]
       @vehicle = Vehicle.find(params[:vehicle_id])
       @people = @vehicle.people.page(params[:page]).per(15)

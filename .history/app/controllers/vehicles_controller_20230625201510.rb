@@ -3,7 +3,7 @@ class VehiclesController < ApplicationController
 
   # GET /vehicles or /vehicles.json
   def index
-    @vehicles = Vehicle.page(params[:page]).per(15)
+    @vehicles = Vehicle.all
   end
 
   # GET /vehicles/1 or /vehicles/1.json

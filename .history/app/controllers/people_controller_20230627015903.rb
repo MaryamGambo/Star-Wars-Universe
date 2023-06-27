@@ -6,6 +6,7 @@ class PeopleController < ApplicationController
     if params[:species_id]
       @species = Species.find(params[:species_id])
       @people = @species.people.page(params[:page]).per(15)
+      @association_name = @specie.name
     elsif params[:planet_id]
       @planet = Planet.find(params[:planet_id])
       @people = @planet.people.page(params[:page]).per(15)

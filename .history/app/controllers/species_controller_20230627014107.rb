@@ -3,7 +3,7 @@ class SpeciesController < ApplicationController
 
   # GET /species or /species.json
   def index
-    @species = Species.page(params[:page]).per(15)
+    @species = Species.page(params[:page]).per(10)
   end
 
   # GET /species/1 or /species/1.json

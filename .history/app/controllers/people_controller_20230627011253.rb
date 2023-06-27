@@ -5,27 +5,27 @@ class PeopleController < ApplicationController
   def index
     if params[:species_id]
       @species = Species.find(params[:species_id])
-      @people = @species.people.page(params[:page]).per(15)
+      @people = @species.people
     elsif params[:planet_id]
       @planet = Planet.find(params[:planet_id])
-      @people = @planet.people.page(params[:page]).per(15)
-      @association_name = @planet.name
+      @people = @planet.people
     elsif params[:vehicle_id]
       @vehicle = Vehicle.find(params[:vehicle_id])
-      @people = @vehicle.people.page(params[:page]).per(15)
+      @people = @vehicle.people
       @association_name = @vehicle.name
     elsif params[:starship_id]
       @starship = Starship.find(params[:starship_id])
-      @people = @starship.people.page(params[:page]).per(15)
+      @people = @starship.people
       @association_name = @starship.name
     elsif params[:film_id]
       @film = Film.find(params[:film_id])
-      @people = @film.people.page(params[:page]).per(15)
+      @people = @film.people
       @association_name = @film.title
     else
-      @people = Person.page(params[:page]).per(15)
+      @people = Person.page(params[:page]).per(5)
     end
   end
+
 
   # GET /people/1 or /people/1.json
   def show

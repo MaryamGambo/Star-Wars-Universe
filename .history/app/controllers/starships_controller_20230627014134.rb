@@ -3,7 +3,7 @@ class StarshipsController < ApplicationController
 
   # GET /starships or /starships.json
   def index
-    @starships = Starship.page(params[:page]).per(15)
+    @starship = Starship.page(params[:page]).per(15)
   end
 
   # GET /starships/1 or /starships/1.json
