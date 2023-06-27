@@ -1,0 +1,17 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Starships</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Model</th>
+    <th>Class</th>
+    <th>Actions</th>
+  </tr>
+  <% @starships.each do |starship| %>
+    <%= render partial: "starship", locals: { starship: starship } %>
+  <% end %>
+</table>
+
+<%= link_to "New starship", new_starship_path %>

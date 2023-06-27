@@ -1,0 +1,5 @@
+<h1>Characters in this Film</h1>
+
+<% @people_in_film.each do |person| %>
+  <p><%= link_to person.name, person_path(person) %></p>
+<% end %>

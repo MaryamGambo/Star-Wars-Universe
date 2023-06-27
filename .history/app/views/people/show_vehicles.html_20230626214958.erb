@@ -1,0 +1,5 @@
+<h1>Characters with this Vehicle</h1>
+
+<% @people_with_vehicle.each do |person| %>
+  <p><%= link_to person.name, person_path(person) %></p>
+<% end %>

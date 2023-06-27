@@ -1,0 +1,31 @@
+<p style="color: green"><%= notice %></p>
+
+
+
+<% if @species %>
+  <h2>Characters with Species: <%= @species.name %></h2>
+  <% @species.people.each do |person| %>
+    <p> <%= link_to person.name, person %></p>
+  <% end %>
+<% elsif @planet %>
+  <h2>Characters with Planet: <%= @planet.name %></h2>
+  <% @planet.people.each do |person| %>
+    <p> <%= link_to person.name, person %></p>
+  <% end %>
+<% else %>
+  <h1>All Characters</h1>
+
+  <div id="people">
+    <% @people.each do |person| %>
+      <p>
+        <%= link_to person.name, person %>
+      </p>
+    <% end %>
+  </div>
+<% end %>
+
+
+
+
+
+

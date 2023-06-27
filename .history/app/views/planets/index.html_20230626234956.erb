@@ -1,0 +1,23 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Planets</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Diameter</th>
+    <th>Population</th>
+    <th>Actions</th>
+  </tr>
+  <% @planets.each do |planet| %>
+    <%= render partial: "planet", locals: { planet: planet } %>
+    <tr>
+      <td><%= planet.name %></td>
+      <td><%= planet.diameter %></td>
+      <td><%= planet.population %></td>
+      <td><%= link_to "Show this planet", planet %></td>
+    </tr>
+  <% end %>
+</table>
+
+<%= link_to "New planet", new_planet_path %>

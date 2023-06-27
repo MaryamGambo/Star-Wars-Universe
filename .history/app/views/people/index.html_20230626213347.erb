@@ -1,0 +1,46 @@
+<p style="color: green"><%= notice %></p>
+
+
+
+<% if @species %>
+  <h2>Characters with Species: <%= @species.name %></h2>
+  <% @species.people.each do |person| %>
+    <p> <%= link_to person.name, person %></p>
+  <% end %>
+<% elsif @planet %>
+  <h2>Characters with Planet: <%= @planet.name %></h2>
+  <% @planet.people.each do |person| %>
+    <p> <%= link_to person.name, person %></p>
+  <% end %>
+<% elsif @starships %>
+  <h1>People with Starship: <%= @starships.first.name %></h1>
+  <% @people_with_starships.each do |person| %>
+    <p><%= link_to person.name, person_path(person) %></p>
+  <% end %>
+<% elsif @films %>
+  <h1>People with Film: <%= @films.first.title %></h1>
+  <% @people_with_films.each do |person| %>
+    <p><%= link_to person.name, person_path(person) %></p>
+  <% end %>
+<% elsif @vehicles %>
+  <h1>People with Vehicle: <%= @vehicles.first.name %></h1>
+  <% @people_with_vehicles.each do |person| %>
+    <p><%= link_to person.name, person_path(person) %></p>
+  <% end %>
+<% else %>
+  <h1>All Characters</h1>
+
+  <div id="people">
+    <% @people.each do |person| %>
+      <p>
+        <%= link_to person.name, person %>
+      </p>
+    <% end %>
+  </div>
+<% end %>
+
+
+
+
+
+

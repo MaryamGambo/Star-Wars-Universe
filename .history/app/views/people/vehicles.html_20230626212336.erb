@@ -1,0 +1,9 @@
+<h1>Characters with the same Vehicles:</h1>
+<ul>
+  <% @people_with_vehicless.each do |person| %>
+    <li><%= link_to person.name, person %></li>
+  <% end %>
+</ul>
+
+<p><%= link_to 'Back to person', @person %></p>
+

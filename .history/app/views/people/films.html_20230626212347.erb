@@ -1,0 +1,9 @@
+<h1>Characters in the same Films:</h1>
+<ul>
+  <% @people_with_films.each do |person| %>
+    <li><%= link_to person.name, person %></li>
+  <% end %>
+</ul>
+
+<p><%= link_to 'Back to person', @person %></p>
+

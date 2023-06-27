@@ -1,0 +1,17 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Films</h1>
+
+<table>
+  <tr>
+    <th>Title</th>
+    <th>Director</th>
+    <th>Release Year</th>
+    <th>Actions</th>
+  </tr>
+  <% @films.each do |film| %>
+    <%= render partial: "film", locals: { film: film } %>
+  <% end %>
+</table>
+
+<%= link_to "New film", new_film_path %>

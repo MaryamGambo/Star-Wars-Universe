@@ -1,0 +1,46 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @person %>
+<% if @species %>
+  <p>Species: <%= link_to @species.name, species_people_path(@species) %></p>
+<% else %>
+    <p>Species: Unknown </p>
+<% end %>
+<% if @planet %>
+  <p>Planet: <%= link_to @planet.name, planet_people_path(@planet) %></p>
+<% else %>
+    <p>Planet: Unknown </p>
+<% end %>
+
+<h2>Starships</h2>
+<% @starships.each do |starship| %>
+  <p><%= link_to starship.name, show_starships_person_path(@person) %></p>
+<% end %>
+
+
+<h2>Films</h2>
+<% @films.each do |film| %>
+  <p><%= link_to film.title, show_films_person_path(@person) %></p>
+<% end %>
+
+<h2>Vehicles</h2>
+<% @vehicles.each do |vehicle| %>
+  <p><%= link_to vehicle.name,
+  <% end %>
+<%= link_to "Characters in this Film", show_films_person_path(@person) %>
+
+
+
+
+
+
+
+
+
+
+
+<div>
+  <%= link_to "Edit this person", edit_person_path(@person) %> |
+  <%= link_to "Delete this person", person_path(@person), method: :delete, data: { confirm: "Are you sure you want to delete this person?" } %> |
+  <%= link_to "Back to all people", people_path %>
+</div>
