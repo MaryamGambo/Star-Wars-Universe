@@ -14,21 +14,6 @@ class PeopleController < ApplicationController
     end
   end
 
-  def starships
-    @person = Person.find(params[:person_id])
-    @starships = @person.starships
-  end
-
-  def vehicles
-    @person = Person.find(params[:person_id])
-    @vehicles = @person.vehicles
-  end
-
-  def films
-    @person = Person.find(params[:person_id])
-    @films = @person.films
-  end
-
   # GET /people/1 or /people/1.json
   def show
     @person = Person.find(params[:id])

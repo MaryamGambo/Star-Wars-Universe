@@ -3,22 +3,23 @@
 
 
 <% if @species %>
-  <h2>Characters with Species: <%= @species.name %></h2>
+  <h2>People with Species: <%= @species.name %></h2>
   <% @species.people.each do |person| %>
     <p> <%= link_to person.name, person %></p>
-  <% end %>
+  <% end %>mj
 <% elsif @planet %>
-  <h2>Characters with Planet: <%= @planet.name %></h2>
+  <h2>People with Planet: <%= @planet.name %></h2>
   <% @planet.people.each do |person| %>
     <p> <%= link_to person.name, person %></p>
   <% end %>
 <% else %>
-  <h1>All Characters</h1>
+  <h1>All People</h1>
 
   <div id="people">
     <% @people.each do |person| %>
+      <%= render person %>
       <p>
-        <%= link_to person.name, person %>
+        <%= link_to "View Character", person %>
       </p>
     <% end %>
   </div>
@@ -28,4 +29,4 @@
 
 
 
-
+<%= link_to "New person", new_person_path %>

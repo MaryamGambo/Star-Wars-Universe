@@ -6,27 +6,9 @@ class PeopleController < ApplicationController
     if params[:species_id]
       @species = Species.find(params[:species_id])
       @people = @species.people
-    elsif params[:planet_id]
-      @planet = Planet.find(params[:planet_id])
-      @people = @planet.people
     else
       @people = Person.all
     end
-  end
-
-  def starships
-    @person = Person.find(params[:person_id])
-    @starships = @person.starships
-  end
-
-  def vehicles
-    @person = Person.find(params[:person_id])
-    @vehicles = @person.vehicles
-  end
-
-  def films
-    @person = Person.find(params[:person_id])
-    @films = @person.films
   end
 
   # GET /people/1 or /people/1.json

@@ -1,8 +1,10 @@
 Rails.application.routes.draw do
   resources :species do
     resources :people, only: :index
+    member do
+      get :show_species_people
+    end
   end
-
   resources :vehicles
   resources :films
   resources :starships
@@ -10,13 +12,13 @@ Rails.application.routes.draw do
     resources :people, only: :index
   end
 
-  resources :people do
-    resources :starships, only: :index
-    resources :vehicles, only: :index
-    resources :films, only: :index
-  end
-
+  resources :people
   get '/about', to: 'about#index', as: 'about'
 
+  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
+
+  # Defines the root path route ("/")
   root "people#index"
+
+
 end

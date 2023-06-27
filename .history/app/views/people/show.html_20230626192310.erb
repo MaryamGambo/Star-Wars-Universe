@@ -1,0 +1,12 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @person %>
+<p>Species: <%= link_to @person.species.name, species_people_path(@person.species) %></p>
+<p>Planet:<%= link_to @person.planet.name, planet_people_path(@person.planet) %></p>
+
+<div>
+  <%= link_to "Edit this person", edit_person_path(@person) %> |
+  <%= link_to "Back to people", people_path %>
+
+  <%= button_to "Destroy this person", @person, method: :delete %>
+</div>

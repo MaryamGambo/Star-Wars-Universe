@@ -10,11 +10,6 @@ class SpeciesController < ApplicationController
   def show
   end
 
-  def show_species_people
-    @species = Species.find(params[:id])
-    @people = @species.people
-  end
-
   # GET /species/new
   def new
     @species = Species.new

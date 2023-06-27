@@ -1,0 +1,41 @@
+<p style="color: green"><%= notice %></p>
+
+
+
+<% if @species %>
+  <h2>People with Species: <%= @species.name %></h2>
+  <% @species.people.each do |person| %>
+    <p><%= person.name %></p>
+  <% end %>mj
+<% elseif %>
+  <h1>All People</h1>
+
+  <div id="people">
+    <% @people.each do |person| %>
+      <%= render person %>
+      <p>
+        <%= link_to "Show this person", person %>
+      </p>
+    <% end %>
+  </div>
+<% end %>
+
+<% if @planet %>
+  <h2>People with Planet: <%= @planet.name %></h2>
+  <% @planet.people.each do |person| %>
+    <p><%= person.name %></p>
+  <% end %>
+<% else %>
+  <h1>All People</h1>
+
+  <div id="people">
+    <% @people.each do |person| %>
+      <%= render person %>
+      <p>
+        <%= link_to "Show this person", person %>
+      </p>
+    <% end %>
+  </div>
+<% end %>
+
+<%= link_to "New person", new_person_path %>

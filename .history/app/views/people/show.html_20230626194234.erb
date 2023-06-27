@@ -12,22 +12,6 @@
     <p>Planet: Unknown </p>
 <% end %>
 
-<h3>Starships:</h3>
-<% @person.starships.each do |starship| %>
-  <p><%= link_to starship.name, person_starships_path(@person, starship) %></p>
-<% end %>
-
-<h3>Vehicles:</h3>
-<% @person.vehicles.each do |vehicle| %>
-  <p><%= link_to vehicle.name, person_vehicles_path(@person, vehicle) %></p>
-<% end %>
-
-<h3>Films:</h3>
-<% @person.films.each do |film| %>
-  <p><%= link_to film.title, person_films_path(@person, film) %></p>
-<% end %>
-
-
 
 <div>
   <%= link_to "Edit this person", edit_person_path(@person) %> |

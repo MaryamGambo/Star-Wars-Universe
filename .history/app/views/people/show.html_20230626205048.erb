@@ -13,20 +13,19 @@
 <% end %>
 
 <h3>Starships:</h3>
-<% @person.starships.each do |starship| %>
-  <p><%= link_to starship.name, person_starships_path(@person, starship) %></p>
-<% end %>
+  <% @person.starships.each do |starship| %>
+    <p><%= link_to starship.name, starship_people_path(starship) %></p>
+  <% end %>
 
-<h3>Vehicles:</h3>
-<% @person.vehicles.each do |vehicle| %>
-  <p><%= link_to vehicle.name, person_vehicles_path(@person, vehicle) %></p>
-<% end %>
+  <h3>Vehicles:</h3>
+  <% @person.vehicles.each do |vehicle| %>
+    <p><%= link_to vehicle.name, vehicle_people_path(vehicle) %></p>
+  <% end %>
 
-<h3>Films:</h3>
-<% @person.films.each do |film| %>
-  <p><%= link_to film.title, person_films_path(@person, film) %></p>
-<% end %>
-
+  <h3>Films:</h3>
+  <% @person.films.each do |film| %>
+    <p><%= link_to film.title, film_people_path(film) %></p>
+  <% end %>
 
 
 <div>
