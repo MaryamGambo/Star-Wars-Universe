@@ -7,7 +7,6 @@ ruby "3.1.2"
 gem 'httparty'
 
 # Kaminari
-gem "kaminari"
 
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
