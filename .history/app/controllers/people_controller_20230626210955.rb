@@ -18,18 +18,17 @@ class PeopleController < ApplicationController
     @person = Person.find(params[:person_id])
     @starships = @person.starships
     @characters = Person.joins(:starships).where(starships: { id: @starships })
+    @characters = Person.joins(:vehicles).where(vehicles: { id: @vehicles })
   end
 
   def vehicles
     @person = Person.find(params[:person_id])
     @vehicles = @person.vehicles
-    @characters = Person.joins(:vehicles).where(vehicles: { id: @vehicles })
   end
 
   def films
     @person = Person.find(params[:person_id])
     @films = @person.films
-    @characters = Person.joins(:films).where(films: { id: @films })
   end
 
   # GET /people/1 or /people/1.json
