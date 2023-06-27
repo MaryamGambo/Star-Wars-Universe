@@ -1,0 +1,39 @@
+<h1>Search Results</h1>
+<% if @people.present? %>
+  <p>
+    Your search <%= params[:name].present? ? "for \"#{params[:name]}\"" : "" %>
+    <%= @species.present? ? "in the \"#{@species.name}\" species category" : "All Species" %>
+    found <%= @people.size %> characters.
+  </p>
+
+  <%= paginate @people%
+
+
+  <ul>
+    <% @people.each do |person| %>
+        <li><%= link_to person.name, person_path(person) %></li>
+    <% end %>
+  </ul>
+<% else %>
+  <p>No search results found.</p>
+<% end %>
+
+<script>
+$(document).ready(function() {
+  $('#name-input').on('input', function() {
+    var name = $(this).val();
+    var speciesId = $('#species_id').val();
+
+    if (name === '') {
+      // If the name field is empty, trigger the search action for the selected species ID
+      $.ajax({
+        url: '/people/search',
+        type: 'GET',
+        dataType: 'script',
+        data: { species_id: speciesId }
+      });
+    }
+  });
+});
+
+</script>

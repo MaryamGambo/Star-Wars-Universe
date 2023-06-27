@@ -1,32 +1,37 @@
 class PeopleController < ApplicationController
   before_action :set_person, only: %i[ show edit update destroy ]
 
-
   # GET /people or /people.json
   def index
-    if params[:species_id]
+    if params[:species_id].present?
       @species = Species.find(params[:species_id])
       @people = @species.people.page(params[:page]).per(15)
-    elsif params[:planet_id]
+    elsif params[:planet_id].present?
       @planet = Planet.find(params[:planet_id])
       @people = @planet.people.page(params[:page]).per(15)
       @association_name = @planet.name
-    elsif params[:vehicle_id]
+    elsif params[:vehicle_id].present?
       @vehicle = Vehicle.find(params[:vehicle_id])
       @people = @vehicle.people.page(params[:page]).per(15)
       @association_name = @vehicle.name
-    elsif params[:starship_id]
+    elsif params[:starship_id].present?
       @starship = Starship.find(params[:starship_id])
       @people = @starship.people.page(params[:page]).per(15)
       @association_name = @starship.name
-    elsif params[:film_id]
+    elsif params[:film_id].present?
       @film = Film.find(params[:film_id])
       @people = @film.people.page(params[:page]).per(15)
       @association_name = @film.title
+    elsif params[:name].present?
+      @people = Person.where('name ILIKE ?', "%#{params[:name]}%").page(params[:page]).per(15)
+    elsif params[:species_id].present?
+      @species = Species.find(params[:species_id])
+      @people = @species.people.page(params[:page]).per(15)
     else
       @people = Person.page(params[:page]).per(15)
     end
   end
+
 
   # GET /people/1 or /people/1.json
   def show
@@ -59,32 +64,6 @@ class PeopleController < ApplicationController
 
     render 'show_association'
   end
-
-  def search
-    if params[:name].present?
-      if params[:species_id].present?
-        @species = Species.find(params[:species_id])
-        @people = @species.people.where('people.name LIKE ?', "%#{params[:name]}%")
-      else
-        @people = Person.joins(:species).where('people.name LIKE ?', "%#{params[:name]}%")
-        @species = nil
-      end
-    elsif params[:name].blank?
-      if params[:species_id].present?
-        @species = Species.find(params[:species_id])
-        @people = @species.people.page(params[:page]).per(15)
-      else
-        @people = Person.page(params[:page]).per(15)
-        @species = nil
-      end
-    else
-      if params[:name].blank? && params[:species_id].blank?
-        @people = Person.page(params[:page]).per(15)
-        @species = nil
-      end
-    end
-  end
-
 
 
 

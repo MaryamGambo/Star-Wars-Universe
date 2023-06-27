@@ -10,10 +10,4 @@
     <li><%= link_to 'About', about_path %></li>
 
   </ul>
-
- <%= form_tag(search_people_path, method: :get, preserve_params: [:name, :species_id]) do %>
-    <%= text_field_tag(:name, params[:name], id: 'name-input', placeholder: 'Search by Name') %>
-    <%= select_tag(:species_id, options_for_select(Species.all.map { |s| [s.name, s.id] }, params[:species_id]), include_blank: 'All Species',default: nil) %>
-    <%= submit_tag('Search') %>
- <% end %>
 </nav>

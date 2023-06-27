@@ -1,0 +1,12 @@
+<h1>Search Results</h1>
+<% if @people.present? %>
+  <p>Your search for "<%= params[:name] %>" in the "<%= @species.name %>" species category found <%= @people.size %> characters.</p>
+
+  <ul>
+    <% @people.each do |person| %>
+        <li><%= link_to person.name, person_path(person) %></li>
+    <% end %>
+  </ul>
+<% else %>
+  <p>No search results found.</p>
+<% end %>

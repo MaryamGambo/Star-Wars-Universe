@@ -29,6 +29,10 @@ Rails.application.routes.draw do
     end
   end
 
+
+
+
+
   get '/about', to: 'about#index', as: 'about'
 
   root "people#index"

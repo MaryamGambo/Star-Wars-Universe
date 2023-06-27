@@ -1,7 +1,6 @@
 class PeopleController < ApplicationController
   before_action :set_person, only: %i[ show edit update destroy ]
 
-
   # GET /people or /people.json
   def index
     if params[:species_id]
@@ -23,6 +22,14 @@ class PeopleController < ApplicationController
       @film = Film.find(params[:film_id])
       @people = @film.people.page(params[:page]).per(15)
       @association_name = @film.title
+    elsif params[:name].present? && params[:species_id].present?
+      @species = Species.find(params[:species_id])
+      @people = @species.people.where('name LIKE ?', "%#{params[:name]}%").page(params[:page]).per(15)
+    elsif params[:name].present?
+      @people = Person.where('name LIKE ?', "%#{params[:name]}%").page(params[:page]).per(15)
+    elsif params[:species_id].present?
+      @species = Species.find(params[:species_id])
+      @people = @species.people.page(params[:page]).per(15)
     else
       @people = Person.page(params[:page]).per(15)
     end
@@ -59,32 +66,6 @@ class PeopleController < ApplicationController
 
     render 'show_association'
   end
-
-  def search
-    if params[:name].present?
-      if params[:species_id].present?
-        @species = Species.find(params[:species_id])
-        @people = @species.people.where('people.name LIKE ?', "%#{params[:name]}%")
-      else
-        @people = Person.joins(:species).where('people.name LIKE ?', "%#{params[:name]}%")
-        @species = nil
-      end
-    elsif params[:name].blank?
-      if params[:species_id].present?
-        @species = Species.find(params[:species_id])
-        @people = @species.people.page(params[:page]).per(15)
-      else
-        @people = Person.page(params[:page]).per(15)
-        @species = nil
-      end
-    else
-      if params[:name].blank? && params[:species_id].blank?
-        @people = Person.page(params[:page]).per(15)
-        @species = nil
-      end
-    end
-  end
-
 
 
 

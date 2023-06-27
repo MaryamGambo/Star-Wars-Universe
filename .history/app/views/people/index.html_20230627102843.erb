@@ -1,0 +1,84 @@
+<p style="color: green"><%= notice %></p>
+
+<%= paginate @people%>
+
+
+<% if @species %>
+  <h2>Characters with Species: <%= @species.name %></h2>
+  <% if @species.people.any? %>
+    <% @species.people.each do |person| %>
+      <p> <%= link_to person.name, person %></p>
+    <% end %>
+  <% else %>
+    <p>No characters found in this species.</p>
+  <% end %>
+<% elsif @planet %>
+  <h2>Characters with Planet: <%= @planet.name %></h2>
+  <% if @planet.people.any? %>
+    <% @planet.people.each do |person| %>
+      <p> <%= link_to person.name, person %></p>
+    <% end %>
+  <% else %>
+    <p>No characters found on this planet.</p>
+  <% end %>
+<% elsif @vehicle %>
+  <h2>Characters with Vehicle: <%= @vehicle.name %></h2>
+  <% if @vehicle.people.any? %>
+    <% @vehicle.people.each do |person| %>
+      <p><%= link_to person.name, person %></p>
+    <% end %>
+  <% else %>
+    <p>No characters found associated with this vehicle.</p>
+  <% end %>
+<% elsif @starship %>
+  <h2>Characters with Starship: <%= @starship.name %></h2>
+  <% if @starship.people.any? %>
+    <% @starship.people.each do |person| %>
+      <p><%= link_to person.name, person %></p>
+    <% end %>
+  <% else %>
+    <p>No characters found associated with this starship.</p>
+  <% end %>
+<% elsif @film %>
+  <h2>Characters with Film: <%= @film.title %></h2>
+  <% if @film.people.any? %>
+    <% @film.people.each do |person| %>
+      <p><%= link_to person.name, person %></p>
+    <% end %>
+  <% else %>
+    <p>No characters found associated with this film.</p>
+  <% end %>
+<% else %>
+  <h1>All Characters</h1>
+
+  <div id="people">
+    <% if @people.any? %>
+      <% @people.each do |person| %>
+        <p>
+          <%= link_to person.name, person %>
+        </p>
+      <% end %>
+    <% else %>
+      <h3>No characters found.</h3>
+    <% end %>
+  </div>
+<% end %>
+In the updated code, a search form is added at the top, allowing users to search by name and species. The search results are displayed based on the conditions in the if-elsif-else statements. If no characters are found in a particular category, an appropriate message is shown.
+
+Make sure to place this updated code within the people/index.html.erb file, replacing the existing content.
+
+
+
+
+
+
+
+<% if @people.empty? %>
+  <h3>No characters found in <%= @association_name %>.</h3>
+<% end %>
+
+
+
+
+
+
