@@ -14,7 +14,7 @@ Rails.application.config.assets.paths << Rails.root.join("app", "assets", "image
 
 Rails.application.config.assets.precompile += %w( bulma.css )
 Rails.application.config.assets.precompile += %w( main.js )
-
+Rails.application.config.assets.precompile += %w[custom.css]
 
 
 

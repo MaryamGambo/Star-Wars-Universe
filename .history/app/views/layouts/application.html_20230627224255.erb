@@ -7,18 +7,12 @@
     <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag 'application', 'bulma', media: 'all', 'data-turbolinks-track': 'reload' %>
-
-
-
-    <%# <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-
+    <%=
   </head>
 
   <body>
     <%= render 'shared/menu' %>
 
     <%= yield %>
-    <%= javascript_include_tag 'main' %>
-
   </body>
 </html>

@@ -3,12 +3,7 @@
 
 <% if @species %>
   <h2 class="title is-2">Characters with Species: <%= @species.name %></h2>
- <table class="table is-hoverable is-striped is-fullwidth mt-3">
- <thead>
-      <tr>
-        <th>Name</th>
-      </tr>
-    </thead>
+   <table class="table is-bordered is-fullwidth">
       <tbody>
          <% @species.people.each do |person| %>
           <tr>
@@ -19,12 +14,7 @@
     </table>
 <% elsif @planet %>
   <h2 class="title is-2">Characters with Planet: <%= @planet.name %></h2>
-  <table class="table is-hoverable is-striped is-fullwidth mt-3">
-  <thead>
-      <tr>
-        <th>Name</th>
-      </tr>
-    </thead>
+  <table class="table is-bordered is-fullwidth">
       <tbody>
          <% @planet.people.each do |person| %>
           <tr>
@@ -35,12 +25,7 @@
     </table>
 <% elsif @vehicle %>
   <h2 class="title is-2">Characters with Vehicle: <%= @vehicle.name %></h2>
-  <table class="table is-hoverable is-striped is-fullwidth mt-3">
-  <thead>
-      <tr>
-        <th>Name</th>
-      </tr>
-    </thead>
+   <table class="table is-bordered is-fullwidth">
       <tbody>
           <% @vehicle.people.each do |person| %>
           <tr>
@@ -51,46 +36,19 @@
     </table>
 <% elsif @starship %>
   <h2 class="title is-2">Characters with Starship: <%= @starship.name %></h2>
-  <table class="table is-hoverable is-striped is-fullwidth mt-3">
-  <thead>
-      <tr>
-        <th>Name</th>
-      </tr>
-    </thead>
-      <tbody>
-          <% @starship.people.each do |person| %>
-          <tr>
-            <td><%= link_to person.name, person %></td>
-          </tr>
-        <% end %>
-      </tbody>
-    </table>
+  <% @starship.people.each do |person| %>
+    <%= render partial: 'person', locals: { person: person } %>
+  <% end %>
 <% elsif @film %>
   <h2 class="title is-2">Characters with Film: <%= @film.title %></h2>
-    <table class="table is-hoverable is-striped is-fullwidth mt-3">
-      <thead>
-      <tr>
-        <th>Name</th>
-      </tr>
-    </thead>
-      <tbody>
-          <% @film.people.each do |person| %>
-          <tr>
-            <td><%= link_to person.name, person %></td>
-          </tr>
-        <% end %>
-      </tbody>
-    </table>
+  <% @film.people.each do |person| %>
+    <%= render partial: 'person', locals: { person: person } %>
+  <% end %>
 <% else %>
   <h1 class="title is-1">All Characters</h1>
   <%= paginate @people, class: 'pagination is-centered is-small' %>
 
-    <table class="table is-hoverable is-striped is-fullwidth mt-3">
-    <thead>
-      <tr>
-        <th>Name</th>
-      </tr>
-    </thead>
+    <table class="table is-bordered is-fullwidth">
       <tbody>
         <% @people.each do |person| %>
           <tr>
@@ -105,4 +63,3 @@
 <% if @people.empty? %>
   <h3>No characters found in <%= @association_name %>.</h3>
 <% end %>
-</div>

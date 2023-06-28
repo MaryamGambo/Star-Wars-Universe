@@ -7,9 +7,6 @@
       found <%= @people.size %> characters.
     </p>
 
-    <div class="custom-paginator">
-      <%= paginate @people, outer_window: 2, inner_window: 1, class: 'pagination is-centered is-small'%>
-    </div>
 
 
     <ul class="list-group mt-4 mb-4">
@@ -21,3 +18,4 @@
     <p>No search results found.</p>
   <% end %>
 </div>
+<%= paginate @people, window: 3, class: 'pagination is-centered is-small' %>

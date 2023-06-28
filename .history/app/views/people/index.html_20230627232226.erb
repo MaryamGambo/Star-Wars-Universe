@@ -4,11 +4,6 @@
 <% if @species %>
   <h2 class="title is-2">Characters with Species: <%= @species.name %></h2>
  <table class="table is-hoverable is-striped is-fullwidth mt-3">
- <thead>
-      <tr>
-        <th>Name</th>
-      </tr>
-    </thead>
       <tbody>
          <% @species.people.each do |person| %>
           <tr>
@@ -20,11 +15,6 @@
 <% elsif @planet %>
   <h2 class="title is-2">Characters with Planet: <%= @planet.name %></h2>
   <table class="table is-hoverable is-striped is-fullwidth mt-3">
-  <thead>
-      <tr>
-        <th>Name</th>
-      </tr>
-    </thead>
       <tbody>
          <% @planet.people.each do |person| %>
           <tr>
@@ -36,11 +26,6 @@
 <% elsif @vehicle %>
   <h2 class="title is-2">Characters with Vehicle: <%= @vehicle.name %></h2>
   <table class="table is-hoverable is-striped is-fullwidth mt-3">
-  <thead>
-      <tr>
-        <th>Name</th>
-      </tr>
-    </thead>
       <tbody>
           <% @vehicle.people.each do |person| %>
           <tr>
@@ -52,11 +37,6 @@
 <% elsif @starship %>
   <h2 class="title is-2">Characters with Starship: <%= @starship.name %></h2>
   <table class="table is-hoverable is-striped is-fullwidth mt-3">
-  <thead>
-      <tr>
-        <th>Name</th>
-      </tr>
-    </thead>
       <tbody>
           <% @starship.people.each do |person| %>
           <tr>
@@ -86,11 +66,6 @@
   <%= paginate @people, class: 'pagination is-centered is-small' %>
 
     <table class="table is-hoverable is-striped is-fullwidth mt-3">
-    <thead>
-      <tr>
-        <th>Name</th>
-      </tr>
-    </thead>
       <tbody>
         <% @people.each do |person| %>
           <tr>
