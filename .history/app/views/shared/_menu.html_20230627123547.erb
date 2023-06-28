@@ -1,0 +1,41 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <a class="navbar-brand" href="<%= root_path %>">STAR WARS UNIVERSE</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <%= link_to 'People', root_path, class: 'nav-link' %>
+      </li>
+      <li class="nav-item">
+        <%= link_to 'Species', species_index_path, class: 'nav-link' %>
+      </li>
+      <li class="nav-item">
+        <%= link_to 'Vehicles', vehicles_path, class: 'nav-link' %>
+      </li>
+      <li class="nav-item">
+        <%= link_to 'Films', films_path, class: 'nav-link' %>
+      </li>
+      <li class="nav-item">
+        <%= link_to 'Starships', starships_path, class: 'nav-link' %>
+      </li>
+      <li class="nav-item">
+        <%= link_to 'Planets', planets_path, class: 'nav-link' %>
+      </li>
+      <li class="nav-item">
+        <%= link_to 'About', about_path, class: 'nav-link' %>
+      </li>
+    </ul>
+    <%= form_tag(search_people_path, method: :get, preserve_params: [:name, :species_id], class: 'form-inline ml-auto') do %>
+      <div class="input-group">
+        <%= text_field_tag(:name, params[:name], id: 'name-input', placeholder: 'Search by Name', class: 'form-control') %>
+        <%= select_tag(:species_id, options_for_select(Species.all.map { |s| [s.name, s.id] }, params[:species_id]), include_blank: 'All Species', default: nil, class: 'form-control') %>
+        <div class="input-group-append">
+          <%= submit_tag('Search', class: 'btn btn-primary') %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</nav>

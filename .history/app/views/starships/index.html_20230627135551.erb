@@ -1,0 +1,26 @@
+<div class="container">
+  <p class="text-success"><%= notice %></p>
+
+  <h1 class="display-1 mt-5">Starships</h1>
+
+  <%= paginate @starships, class: "pagination justify-content-center" %>
+
+  <table class="table table-dark mt-3">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Model</th>
+        <th>Manufacturer</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @starships.each do |starship| %>
+        <%= render partial: "starship", locals: { starship: starship } %>
+      <% end %>
+    </tbody>
+  </table>
+
+  <%= link_to "New starship", new_starship_path, class: "btn btn-primary" %>
+</div>

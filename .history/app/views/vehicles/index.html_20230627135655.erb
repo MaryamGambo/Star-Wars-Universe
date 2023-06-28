@@ -1,0 +1,25 @@
+<div class="container">
+  <p class="text-success"><%= notice %></p>
+
+  <h1 class="display-1 mt-5">Vehicles</h1>
+
+  <%= paginate @vehicles, class: "pagination " %>
+
+  <table class="table table-dark mt-3">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Model</th>
+        <th>Manufacturer</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @vehicles.each do |vehicle| %>
+        <%= render partial: "vehicle", locals: { vehicle: vehicle } %>
+      <% end %>
+    </tbody>
+  </table>
+
+  <%= link_to "New vehicle", new_vehicle_path, class: "btn btn-primary" %>
+</div>

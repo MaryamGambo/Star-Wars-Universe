@@ -1,0 +1,45 @@
+<p class="has-text-success"><%= notice %></p>
+
+<%= paginate @people, class: 'pagination' %>
+
+<% if @species %>
+  <h2 class="title is-2">Characters with Species: <%= @species.name %></h2>
+  <% @species.people.each do |person| %>
+    <p><%= link_to person.name, person, class: 'has-text-primary' %></p>
+  <% end %>
+<% elsif @planet %>
+  <h2 class="title is-2">Characters with Planet: <%= @planet.name %></h2>
+  <% @planet.people.each do |person| %>
+    <p><%= link_to person.name, person, class: 'has-text-primary' %></p>
+  <% end %>
+
+<% elsif @vehicle %>
+  <h2 class="title is-2">Characters with Vehicle: <%= @vehicle.name %></h2>
+  <% @vehicle.people.each do |person| %>
+    <p><%= link_to person.name, person, class: 'has-text-primary' %></p>
+  <% end %>
+<% elsif @starship %>
+  <h2 class="title is-2">Characters with Starship: <%= @starship.name %></h2>
+  <% @starship.people.each do |person| %>
+    <p><%= link_to person.name, person, class: 'has-text-primary' %></p>
+  <% end %>
+<% elsif @film %>
+  <h2 class="title is-2">Characters with Film: <%= @film.title %></h2>
+  <% @film.people.each do |person| %>
+    <p><%= link_to person.name, person, class: 'has-text-primary' %></p>
+  <% end %>
+<% else %>
+  <h1 class="title is-1">All Characters</h1>
+
+  <div id="people">
+    <% @people.each do |person| %>
+      <p>
+        <%= link_to person.name, person, class: 'has-text-primary' %>
+      </p>
+    <% end %>
+  </div>
+<% end %>
+
+<% if @people.empty? %>
+  <h3>No characters found in <%= @association_name %>.</h3>
+<% end %>

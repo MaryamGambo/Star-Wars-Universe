@@ -1,0 +1,8 @@
+.pagination-list {
+  justify-content: center;
+}
+
+.pagination-ellipsis,
+.pagination-link {
+  margin: 0 0.25rem;
+}

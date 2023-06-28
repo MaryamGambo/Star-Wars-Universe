@@ -1,0 +1,26 @@
+<div class="container">
+  <p class="text-success"><%= notice %></p>
+
+  <h1 class="display-4 mt-5">Planets</h1>
+
+  <%= paginate @planets, class: "pagination " %>
+
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Diameter</th>
+        <th>Population</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @planets.each do |planet| %>
+        <%= render partial: "planet", locals: { planet: planet } %>
+      <% end %>
+    </tbody>
+  </table>
+
+  <%= link_to "New planet", new_planet_path, class: "btn btn-primary" %>
+</div>

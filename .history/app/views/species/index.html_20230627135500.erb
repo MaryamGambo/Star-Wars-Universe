@@ -1,0 +1,26 @@
+<div class="container">
+  <p class="text-success"><%= notice %></p>
+
+  <h1 class="display-1 mt-5">Species</h1>
+
+  <%= paginate @species, class: "pagination justify-content-center" %>
+
+  <table class="table mt-3">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Classification</th>
+        <th>Language</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @species.each do |species| %>
+        <%= render partial: "species", locals: { species: species } %>
+      <% end %>
+    </tbody>
+  </table>
+
+  <%= link_to "New species", new_species_path, class: "btn btn-primary" %>
+</div>
