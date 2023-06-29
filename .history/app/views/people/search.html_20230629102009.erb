@@ -3,7 +3,7 @@
   <% if @people.present? %>
     <p>
       Your search <%= params[:name].present? ? "for \"#{params[:name]}\"" : "" %>
-      <%= @species.present? ? "in the \"#{@species.name}\" species category" : "in All Species" %>
+      <%= @species.present? ? "in the \"#{@species.name}\" species category" : "All Species" %>
       found <%= @people.size %> characters.
     </p>
 
